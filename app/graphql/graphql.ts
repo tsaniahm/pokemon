@@ -56326,6 +56326,121 @@ export type Subscription_RootPokemon_V2_Versionname_StreamArgs = {
   where?: InputMaybe<Pokemon_V2_Versionname_Bool_Exp>;
 };
 
+export type Pokemon_V2_Pokedex_AggregateQueryVariables = Exact<{
+  distinct_on?: InputMaybe<
+    Array<Pokemon_V2_Pokedex_Select_Column> | Pokemon_V2_Pokedex_Select_Column
+  >;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
+  order_by?: InputMaybe<
+    Array<Pokemon_V2_Pokedex_Order_By> | Pokemon_V2_Pokedex_Order_By
+  >;
+  where?: InputMaybe<Pokemon_V2_Pokedex_Bool_Exp>;
+}>;
+
+export type Pokemon_V2_Pokedex_AggregateQuery = {
+  __typename?: "query_root";
+  pokemon_v2_pokedex_aggregate: {
+    __typename?: "pokemon_v2_pokedex_aggregate";
+    aggregate?:
+      | {
+          __typename?: "pokemon_v2_pokedex_aggregate_fields";
+          count: number;
+          avg?:
+            | {
+                __typename?: "pokemon_v2_pokedex_avg_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          max?:
+            | {
+                __typename?: "pokemon_v2_pokedex_max_fields";
+                id?: number | null | undefined;
+                name?: string | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          min?:
+            | {
+                __typename?: "pokemon_v2_pokedex_min_fields";
+                id?: number | null | undefined;
+                name?: string | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          stddev?:
+            | {
+                __typename?: "pokemon_v2_pokedex_stddev_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          stddev_pop?:
+            | {
+                __typename?: "pokemon_v2_pokedex_stddev_pop_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          stddev_samp?:
+            | {
+                __typename?: "pokemon_v2_pokedex_stddev_samp_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          sum?:
+            | {
+                __typename?: "pokemon_v2_pokedex_sum_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          var_pop?:
+            | {
+                __typename?: "pokemon_v2_pokedex_var_pop_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          var_samp?:
+            | {
+                __typename?: "pokemon_v2_pokedex_var_samp_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+          variance?:
+            | {
+                __typename?: "pokemon_v2_pokedex_variance_fields";
+                id?: number | null | undefined;
+                region_id?: number | null | undefined;
+              }
+            | null
+            | undefined;
+        }
+      | null
+      | undefined;
+    nodes: Array<{
+      __typename?: "pokemon_v2_pokedex";
+      id: number;
+      is_main_series: boolean;
+      name: string;
+      region_id?: number | null | undefined;
+    }>;
+  };
+};
+
 export type Pokemon_V2_PokedexQueryVariables = Exact<{
   distinct_on?: InputMaybe<
     Array<Pokemon_V2_Pokedex_Select_Column> | Pokemon_V2_Pokedex_Select_Column
@@ -56349,6 +56464,87 @@ export type Pokemon_V2_PokedexQuery = {
   }>;
 };
 
+export const Pokemon_V2_Pokedex_AggregateDocument = gql`
+  query pokemon_v2_pokedex_aggregate(
+    $distinct_on: [pokemon_v2_pokedex_select_column!]
+    $limit: Int
+    $offset: Int
+    $order_by: [pokemon_v2_pokedex_order_by!]
+    $where: pokemon_v2_pokedex_bool_exp
+  ) {
+    pokemon_v2_pokedex_aggregate(
+      distinct_on: $distinct_on
+      limit: $limit
+      offset: $offset
+      order_by: $order_by
+      where: $where
+    ) {
+      aggregate {
+        avg {
+          id
+          region_id
+        }
+        count(columns: [id], distinct: true)
+        max {
+          id
+          name
+          region_id
+        }
+        min {
+          id
+          name
+          region_id
+        }
+        stddev {
+          id
+          region_id
+        }
+        stddev_pop {
+          id
+          region_id
+        }
+        stddev_samp {
+          id
+          region_id
+        }
+        sum {
+          id
+          region_id
+        }
+        var_pop {
+          id
+          region_id
+        }
+        var_samp {
+          id
+          region_id
+        }
+        variance {
+          id
+          region_id
+        }
+      }
+      nodes {
+        id
+        is_main_series
+        name
+        region_id
+      }
+    }
+  }
+`;
+
+export function usePokemon_V2_Pokedex_AggregateQuery(
+  options?: Omit<
+    Urql.UseQueryArgs<Pokemon_V2_Pokedex_AggregateQueryVariables>,
+    "query"
+  >
+) {
+  return Urql.useQuery<
+    Pokemon_V2_Pokedex_AggregateQuery,
+    Pokemon_V2_Pokedex_AggregateQueryVariables
+  >({ query: Pokemon_V2_Pokedex_AggregateDocument, ...options });
+}
 export const Pokemon_V2_PokedexDocument = gql`
   query pokemon_v2_pokedex(
     $distinct_on: [pokemon_v2_pokedex_select_column!]
