@@ -1,0 +1,19 @@
+
+schema:
+  - "https://beta.pokeapi.co/graphql/v1beta" 
+documents:
+  - "./app/graphql/**/*.graphql"
+generates:
+  ./app/graphql/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-urql"
+    config:
+      withComponent: false 
+      withHooks: true
+      maybeValue: T | null | undefined
+      enumsAsTypes: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
