@@ -1,0 +1,62 @@
+
+query pokemon_v2_pokedex_aggregate($distinct_on: [pokemon_v2_pokedex_select_column!], $limit: Int, $offset: Int, $order_by: [pokemon_v2_pokedex_order_by!], $where: pokemon_v2_pokedex_bool_exp){
+  pokemon_v2_pokedex_aggregate(
+   distinct_on: $distinct_on
+    limit: $limit
+    offset: $offset
+    order_by: $order_by
+    where: $where
+  ) {
+    aggregate {
+      avg {
+        id
+        region_id
+      }  
+      count(columns: [id], distinct: true)
+      max {
+        id
+        name
+        region_id
+      } 
+      min {
+        id
+        name
+        region_id
+      } 
+      stddev {
+        id
+        region_id
+      } 
+      stddev_pop {
+        id
+        region_id
+      } 
+      stddev_samp {
+        id
+        region_id
+      } 
+      sum {
+        id
+        region_id
+      } 
+      var_pop {
+        id
+        region_id
+      }  
+      var_samp {
+        id
+        region_id
+      } 
+      variance {
+        id
+        region_id
+      } 
+    }
+    nodes {
+      id
+      is_main_series
+      name
+      region_id
+    }
+  }
+}
